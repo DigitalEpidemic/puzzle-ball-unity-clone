@@ -41,16 +41,28 @@ public class BallMovement : MonoBehaviour {
 
 	private Camera mainCamera;
 
+	void Awake () {
+		myBody = GetComponent<Rigidbody> ();
+		mainCamera = Camera.main;
+	}
+
 	void Start () {
 		
 	}
 
 	void Update () {
+		UpdateCameraRelativePosition ();
 		GetDirection ();
+		FullSpeedController ();
+		DragAdjustmentAndAirSpeed ();
 	}
 
 	void FixedUpdate () {
 		MoveTheBall ();
+	}
+
+	void LateUpdate () {
+		directionLastFrame = direction;
 	}
 
 	void GetDirection () {
@@ -72,6 +84,17 @@ public class BallMovement : MonoBehaviour {
 	void MoveTheBall () {
 		switch (direction) {
 		case "upright":
+			if (onFloorTracker > 0) {
+				// On the floor
+				if (fullSpeed) {
+					myBody.AddForce (floorSpeed * cameraRelative_Up_Right * Time.fixedDeltaTime * delta);
+				} else {
+					myBody.AddForce ((floorSpeed - 75f) * cameraRelative_Up_Right * Time.fixedDeltaTime * delta);
+				}
+
+			} else if (onFloorTracker == 0) {
+				// In the air
+			}
 			break;
 		case "upleft":
 			break;
@@ -87,6 +110,66 @@ public class BallMovement : MonoBehaviour {
 			break; 
 		case "left":
 			break; 
+		}
+	}
+
+	void UpdateCameraRelativePosition () {
+		cameraRelative_Right = mainCamera.transform.TransformDirection (Vector3.right);
+
+		cameraRelative_Up = mainCamera.transform.TransformDirection (Vector3.forward);
+		cameraRelative_Up.y = 0f;
+		cameraRelative_Up = cameraRelative_Up.normalized; // Keeps direction, but shortens to 1 unit
+
+		cameraRelative_Up_Right = (cameraRelative_Up + cameraRelative_Right);
+		cameraRelative_Up_Right = cameraRelative_Up_Right.normalized;
+
+		cameraRelative_Up_Left = (cameraRelative_Up - cameraRelative_Right);
+		cameraRelative_Up_Left = cameraRelative_Up_Left.normalized;
+	}
+
+	void FullSpeedController () {
+		if (direction != directionLastFrame) {
+			
+			if (direction == "") {
+				StopCoroutine ("FullSpeedTimer");
+				fullSpeed = false;
+
+			} else if (directionLastFrame == "") {
+				StartCoroutine ("FullSpeedTimer");
+			}
+		}
+	}
+
+	IEnumerator FullSpeedTimer () {
+		yield return new WaitForSeconds (0.07f);
+		fullSpeed = true;
+	}
+
+	void DragAdjustmentAndAirSpeed () {
+		if (onFloorTracker > 0) {
+			// On the floor
+			myBody.drag = floorDrag;
+		} else {
+			// In the air
+			xVelocity = Vector3.Project (myBody.velocity, cameraRelative_Right);
+			zVelocity = Vector3.Project (myBody.velocity, cameraRelative_Up);
+
+			xSpeed = xVelocity.magnitude;
+			zSpeed = zVelocity.magnitude;
+
+			myBody.drag = airDrag;
+		}
+	}
+
+	void OnCollisionEnter (Collision target) {
+		if (target.gameObject.tag == "Floor") {
+			onFloorTracker++;
+		}
+	}
+
+	void OnCollisionExit (Collision target) {
+		if (target.gameObject.tag == "Floor") {
+			onFloorTracker--;
 		}
 	}
 
