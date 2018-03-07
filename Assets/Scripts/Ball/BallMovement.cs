@@ -76,7 +76,7 @@ public class BallMovement : MonoBehaviour {
 
 		if (Input.GetAxis (Axis_X) > 0) {
 			direction += "right";
-		} else if (Input.GetAxis (Axis_X) > 0) {
+		} else if (Input.GetAxis (Axis_X) < 0) {
 			direction += "left";
 		}
 	}
@@ -94,22 +94,210 @@ public class BallMovement : MonoBehaviour {
 
 			} else if (onFloorTracker == 0) {
 				// In the air
+				if (zVelocity.normalized == cameraRelative_Up) {
+					if (zSpeed < (airSpeed - airSpeed_Diagonal - 0.1f)) {
+						myBody.AddForce (10.6f * cameraRelative_Up * Time.fixedDeltaTime * delta);
+					}
+				} else {
+					myBody.AddForce (10.6f * cameraRelative_Up * Time.fixedDeltaTime * delta);
+				}
+
+				if (xVelocity.normalized == cameraRelative_Right) {
+					if (xSpeed < (airSpeed - airSpeed_Diagonal - 0.1f)) {
+						myBody.AddForce (10.6f * cameraRelative_Right * Time.fixedDeltaTime * delta);
+					}
+				} else {
+					myBody.AddForce (10.6f * cameraRelative_Right * Time.fixedDeltaTime * delta);
+				}
 			}
 			break;
+
 		case "upleft":
+			if (onFloorTracker > 0) {
+				// On the floor
+				if (fullSpeed) {
+					myBody.AddForce (floorSpeed * cameraRelative_Up_Left * Time.fixedDeltaTime * delta);
+				} else {
+					myBody.AddForce ((floorSpeed - 75f) * cameraRelative_Up_Left * Time.fixedDeltaTime * delta);
+				}
+
+			} else if (onFloorTracker == 0) {
+				// In the air
+				if (zVelocity.normalized == cameraRelative_Up) {
+					if (zSpeed < (airSpeed - airSpeed_Diagonal - 0.1f)) {
+						myBody.AddForce (10.6f * cameraRelative_Up * Time.fixedDeltaTime * delta);
+					}
+				} else {
+					myBody.AddForce (10.6f * cameraRelative_Up * Time.fixedDeltaTime * delta);
+				}
+
+				if (xVelocity.normalized == -cameraRelative_Right) {
+					if (xSpeed < (airSpeed - airSpeed_Diagonal - 0.1f)) {
+						myBody.AddForce (10.6f * -cameraRelative_Right * Time.fixedDeltaTime * delta);
+					}
+				} else {
+					myBody.AddForce (10.6f * -cameraRelative_Right * Time.fixedDeltaTime * delta);
+				}
+			}
 			break;
-		case "downleft":
-			break;
+
 		case "downright":
-			break; 
-		case "up":
+			if (onFloorTracker > 0) {
+				// On the floor
+				if (fullSpeed) {
+					myBody.AddForce (floorSpeed * -cameraRelative_Up_Left * Time.fixedDeltaTime * delta);
+				} else {
+					myBody.AddForce ((floorSpeed - 75f) * -cameraRelative_Up_Left * Time.fixedDeltaTime * delta);
+				}
+
+			} else if (onFloorTracker == 0) {
+				// In the air
+				if (zVelocity.normalized == -cameraRelative_Up) {
+					if (zSpeed < (airSpeed - airSpeed_Diagonal - 0.1f)) {
+						myBody.AddForce (10.6f * -cameraRelative_Up * Time.fixedDeltaTime * delta);
+					}
+				} else {
+					myBody.AddForce (10.6f * -cameraRelative_Up * Time.fixedDeltaTime * delta);
+				}
+
+				if (xVelocity.normalized == cameraRelative_Right) {
+					if (xSpeed < (airSpeed - airSpeed_Diagonal - 0.1f)) {
+						myBody.AddForce (10.6f * cameraRelative_Right * Time.fixedDeltaTime * delta);
+					}
+				} else {
+					myBody.AddForce (10.6f * cameraRelative_Right * Time.fixedDeltaTime * delta);
+				}
+			}
 			break;
+
+		case "downleft":
+			if (onFloorTracker > 0) {
+				// On the floor
+				if (fullSpeed) {
+					myBody.AddForce (floorSpeed * -cameraRelative_Up_Right * Time.fixedDeltaTime * delta);
+				} else {
+					myBody.AddForce ((floorSpeed - 75f) * -cameraRelative_Up_Right * Time.fixedDeltaTime * delta);
+				}
+
+			} else if (onFloorTracker == 0) {
+				// In the air
+				if (zVelocity.normalized == -cameraRelative_Up) {
+					if (zSpeed < (airSpeed - airSpeed_Diagonal - 0.1f)) {
+						myBody.AddForce (10.6f * -cameraRelative_Up * Time.fixedDeltaTime * delta);
+					}
+				} else {
+					myBody.AddForce (10.6f * -cameraRelative_Up * Time.fixedDeltaTime * delta);
+				}
+
+				if (xVelocity.normalized == -cameraRelative_Right) {
+					if (xSpeed < (airSpeed - airSpeed_Diagonal - 0.1f)) {
+						myBody.AddForce (10.6f * -cameraRelative_Right * Time.fixedDeltaTime * delta);
+					}
+				} else {
+					myBody.AddForce (10.6f * -cameraRelative_Right * Time.fixedDeltaTime * delta);
+				}
+			}
+			break;
+
+		case "up":
+			if (onFloorTracker > 0) {
+				// On the floor
+				if (fullSpeed) {
+					myBody.AddForce (floorSpeed * cameraRelative_Up * Time.fixedDeltaTime * delta);
+				} else {
+					myBody.AddForce ((floorSpeed - 75f) * cameraRelative_Up * Time.fixedDeltaTime * delta);
+				}
+
+			} else if (onFloorTracker == 0) {
+				// In the air
+				if (zSpeed < airSpeed) {
+					myBody.AddForce ((airSpeed * 0.75f) * cameraRelative_Up * Time.fixedDeltaTime * delta);
+				}
+
+				if (xSpeed > 0.1f) {
+					if (xVelocity.normalized == cameraRelative_Right) {
+						myBody.AddForce ((airSpeed * 0.75f) * -cameraRelative_Right * Time.fixedDeltaTime * delta);
+					} else if (xVelocity.normalized == -cameraRelative_Right) {
+						myBody.AddForce ((airSpeed * 0.75f) * cameraRelative_Right * Time.fixedDeltaTime * delta);
+					}
+				}
+			}
+			break;
+
 		case "down":
-			break; 
+			if (onFloorTracker > 0) {
+				// On the floor
+				if (fullSpeed) {
+					myBody.AddForce (floorSpeed * -cameraRelative_Up * Time.fixedDeltaTime * delta);
+				} else {
+					myBody.AddForce ((floorSpeed - 75f) * -cameraRelative_Up * Time.fixedDeltaTime * delta);
+				}
+
+			} else if (onFloorTracker == 0) {
+				// In the air
+				if (zSpeed < airSpeed) {
+					myBody.AddForce ((airSpeed * 0.75f) * -cameraRelative_Up * Time.fixedDeltaTime * delta);
+				}
+
+				if (xSpeed > 0.1f) {
+					if (xVelocity.normalized == cameraRelative_Right) {
+						myBody.AddForce ((airSpeed * 0.75f) * -cameraRelative_Right * Time.fixedDeltaTime * delta);
+					} else if (xVelocity.normalized == -cameraRelative_Right) {
+						myBody.AddForce ((airSpeed * 0.75f) * cameraRelative_Right * Time.fixedDeltaTime * delta);
+					}
+				}
+			}
+			break;
+
 		case "right":
-			break; 
+			if (onFloorTracker > 0) {
+				// On the floor
+				if (fullSpeed) {
+					myBody.AddForce (floorSpeed * cameraRelative_Right * Time.fixedDeltaTime * delta);
+				} else {
+					myBody.AddForce ((floorSpeed - 75f) * cameraRelative_Right * Time.fixedDeltaTime * delta);
+				}
+
+			} else if (onFloorTracker == 0) {
+				// In the air
+				if (xSpeed < airSpeed) {
+					myBody.AddForce ((airSpeed * 0.75f) * cameraRelative_Right * Time.fixedDeltaTime * delta);
+				}
+
+				if (zSpeed > 0.1f) {
+					if (zVelocity.normalized == cameraRelative_Up) {
+						myBody.AddForce ((airSpeed * 0.75f) * -cameraRelative_Up * Time.fixedDeltaTime * delta);
+					} else if (zVelocity.normalized == -cameraRelative_Up) {
+						myBody.AddForce ((airSpeed * 0.75f) * cameraRelative_Up * Time.fixedDeltaTime * delta);
+					}
+				}
+			}
+			break;
+
 		case "left":
-			break; 
+			if (onFloorTracker > 0) {
+				// On the floor
+				if (fullSpeed) {
+					myBody.AddForce (floorSpeed * -cameraRelative_Right * Time.fixedDeltaTime * delta);
+				} else {
+					myBody.AddForce ((floorSpeed - 75f) * -cameraRelative_Right * Time.fixedDeltaTime * delta);
+				}
+
+			} else if (onFloorTracker == 0) {
+				// In the air
+				if (xSpeed < airSpeed) {
+					myBody.AddForce ((airSpeed * 0.75f) * -cameraRelative_Right * Time.fixedDeltaTime * delta);
+				}
+
+				if (zSpeed > 0.1f) {
+					if (zVelocity.normalized == cameraRelative_Up) {
+						myBody.AddForce ((airSpeed * 0.75f) * -cameraRelative_Up * Time.fixedDeltaTime * delta);
+					} else if (zVelocity.normalized == -cameraRelative_Up) {
+						myBody.AddForce ((airSpeed * 0.75f) * cameraRelative_Up * Time.fixedDeltaTime * delta);
+					}
+				}
+			}
+			break;
 		}
 	}
 
