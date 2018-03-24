@@ -289,6 +289,7 @@ MonoBehaviour:
   audioSource: {fileID: 82301585459408158}
   ballRollAudio: {fileID: 82486878633363840}
   pickUp: {fileID: 8300000, guid: 2e030815638f9414289c1b5d7f303b6c, type: 3}
+  wallHit: {fileID: 8300000, guid: 585dd6c04559ea74c81e147e646bfa3d, type: 3}
 --- !u!135 &135397925326569078
 SphereCollider:
   m_ObjectHideFlags: 1
