@@ -192,11 +192,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: f98671dd90028ed44b3dfc05624b0893, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -287,6 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 82301585459408158}
+  ballRollAudio: {fileID: 82486878633363840}
   pickUp: {fileID: 8300000, guid: 2e030815638f9414289c1b5d7f303b6c, type: 3}
 --- !u!135 &135397925326569078
 SphereCollider:
