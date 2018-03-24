@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 65981394453220450}
   - component: {fileID: 23667676594363950}
   m_Layer: 0
-  m_Name: Wall 1
+  m_Name: Wall 3
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 33843694954385594}
   - component: {fileID: 65668392819917896}
   - component: {fileID: 23237637931112356}
+  - component: {fileID: 114264686939384916}
   m_Layer: 0
   m_Name: Small Ball Remove
   m_TagString: SmallBall
@@ -306,6 +307,7 @@ GameObject:
   - component: {fileID: 33001325487166424}
   - component: {fileID: 65082111592448228}
   - component: {fileID: 23730771405250162}
+  - component: {fileID: 114842661374104262}
   m_Layer: 0
   m_Name: Large Ball Remove
   m_TagString: LargeBall
@@ -411,6 +413,7 @@ GameObject:
   - component: {fileID: 33733281791326136}
   - component: {fileID: 65775796050390464}
   - component: {fileID: 23578133126706068}
+  - component: {fileID: 114651395634550566}
   m_Layer: 0
   m_Name: Teleport
   m_TagString: Untagged
@@ -1026,7 +1029,7 @@ Transform:
   m_GameObject: {fileID: 1372162513590788}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 64.68, y: -13.27, z: -144.27213}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 100, y: 98, z: 98}
   m_Children:
   - {fileID: 4045954253495770}
   - {fileID: 4657187076443076}
@@ -3315,3 +3318,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114264686939384916
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1428673450722604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0342291574650a8409472c66df42d600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114651395634550566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1542774836215680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2745734e2b831014fbd60ca613d01771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportPos: {x: 21, y: 5, z: 14}
+--- !u!114 &114842661374104262
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1461760605253464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0342291574650a8409472c66df42d600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

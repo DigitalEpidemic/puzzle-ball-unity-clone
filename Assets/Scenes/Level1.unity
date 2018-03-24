@@ -152,18 +152,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1153557450774862, guid: f1628f187268645a4a5a6e768e0dec01, type: 2}
-      propertyPath: m_Name
-      value: Wall 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4214594908423788, guid: f1628f187268645a4a5a6e768e0dec01, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 98
-      objectReference: {fileID: 0}
-    - target: {fileID: 4214594908423788, guid: f1628f187268645a4a5a6e768e0dec01, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 98
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f1628f187268645a4a5a6e768e0dec01, type: 2}
   m_IsPrefabParent: 0
@@ -265,23 +253,23 @@ MonoBehaviour:
   ySpeed: 120
   yMinLimit: 0
   yMaxLimit: 80
---- !u!1 &669248902 stripped
+--- !u!1 &878159472 stripped
 GameObject:
-  m_PrefabParentObject: {fileID: 1428673450722604, guid: f1628f187268645a4a5a6e768e0dec01,
+  m_PrefabParentObject: {fileID: 1733286449142676, guid: f1628f187268645a4a5a6e768e0dec01,
     type: 2}
   m_PrefabInternal: {fileID: 151949909}
---- !u!114 &669248904
+--- !u!114 &878159473
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 669248902}
+  m_GameObject: {fileID: 878159472}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0342291574650a8409472c66df42d600, type: 3}
+  m_Script: {fileID: 11500000, guid: 20df150dc57866a49a9d3c49a9912ffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1499274895
+--- !u!1001 &1330178556
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -388,19 +376,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &2020566360 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1461760605253464, guid: f1628f187268645a4a5a6e768e0dec01,
-    type: 2}
-  m_PrefabInternal: {fileID: 151949909}
---- !u!114 &2020566362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2020566360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0342291574650a8409472c66df42d600, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
