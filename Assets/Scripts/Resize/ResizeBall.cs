@@ -56,7 +56,11 @@ public class ResizeBall : MonoBehaviour {
 			}
 
 			if (ballResized) {
-				resizerRemoveCollided = true;
+
+				if (removeResizer) {
+					resizerRemoveCollided = true;
+				}
+
 				ballResized = false;
 				target.gameObject.GetComponent<BallSound> ().PlayPickUpSound ();
 			}

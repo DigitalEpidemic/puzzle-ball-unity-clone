@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Ball
   - Floor
+  - Wall
+  - SmallBall
+  - LargeBall
+  - MediumBall
+  - Level
   layers:
   - Default
   - TransparentFX
