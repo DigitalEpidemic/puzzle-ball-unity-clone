@@ -7,7 +7,8 @@ public class ExitLevel : MonoBehaviour {
 
 	void OnTriggerEnter (Collider target) {
 		if (target.tag == "Ball") {
-			StartCoroutine (LoadMainMenu ());
+			//StartCoroutine (LoadMainMenu ());
+			SceneManager.LoadScene ("MainMenu");
 		}
 	}
 
