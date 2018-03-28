@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BallMovement : MonoBehaviour {
 
@@ -55,6 +56,7 @@ public class BallMovement : MonoBehaviour {
 		GetDirection ();
 		FullSpeedController ();
 		DragAdjustmentAndAirSpeed ();
+		BallFellDown ();
 	}
 
 	void FixedUpdate () {
@@ -346,6 +348,12 @@ public class BallMovement : MonoBehaviour {
 			zSpeed = zVelocity.magnitude;
 
 			myBody.drag = airDrag;
+		}
+	}
+
+	void BallFellDown () {
+		if (transform.position.y < -30f) {
+			SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
 		}
 	}
 
